@@ -1,0 +1,33 @@
+<div class="row text-center mt-5">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+      <div class="card text-center card-form">
+          <div class="card-body">
+            <h3>Create an Account</h3>
+            <div  *ngIf="inValide" class="text-danger">
+                User already exists, try another username !
+          </div>
+            <form #form='ngForm' (submit)="register(form.value)" class="mt-5">
+                <div class="form-group">
+                    <input type="text" #username="ngModel" ngModel name="username" required class="form-control form-control-lg" placeholder="Username">
+                    <div *ngIf="username.errors" class="text-danger">
+                        <small *ngIf="username.errors.required">Ce champs est obligartoire</small>
+                      </div>
+                </div>
+                <div class="form-group ">
+                    <input type="password" #password="ngModel" ngModel name="password" required class="form-control form-control-lg" minlength="6" placeholder="Password">
+                    <div *ngIf="password.errors" class="text-danger">
+                        <small *ngIf="password.errors.required">Ce champs est obligartoire</small>
+                        <small *ngIf="password.errors.minlength">mot de pass doit etre plus de 6 caracteres</small>
+                      </div>
+                </div>
+                <input [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block" value="Sign up">
+            </form>
+            
+        </div>
+       <p> Already have an account? <a  routerLink="/login"> Login here</a></p>
+    </div>
+
+  </div>
+<div class="col-lg-4"></div>
+</div>

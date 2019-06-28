@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/">App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a  *ngIf="logged" class="nav-item nav-link" routerLink="/">home</a>
+        <a  *ngIf="logged" class="nav-item nav-link" routerLink="/add">Add a book</a>
+        <a class="nav-item nav-link" routerLink="/contact">contact</a>
+      </div>
+      
+      <div class="navbar-nav ml-auto mr-5">
+         <a class="nav-item nav-link dropdown d-inline">
+              <a  *ngIf="logged" class="nav-item float-right text-light dropdown-toogle" data-toggle="dropdown">{{username}}</a>
+              <li class="dropdown-menu ">
+                <a (click)="logout()" class="dropdown-item">Logout</a>
+              </li>
+           </a>
+        
+      </div>
+    </div>
+
+    
+</nav>

@@ -1,0 +1,32 @@
+<div class="row text-center mt-5">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <div class="card text-center card-form">
+            <div class="card-body">
+              <h3>Login</h3>
+              <div  *ngIf="inValide" class="text-danger">
+                    Mot de pass / username invalide
+              </div>
+              <form #form='ngForm' (submit)="login(form.value)" class="mt-5">
+                  <div class="form-group">
+                      <input type="text" #username="ngModel" ngModel name="username" required class="form-control form-control-lg" placeholder="Username">
+                      <div *ngIf="username.errors" class="text-danger">
+                          <small *ngIf="username.errors.required">Ce champs est obligartoire</small>
+                        </div>
+                  </div>
+                  <div class="form-group ">
+                      <input type="password" #password="ngModel" ngModel name="password" required class="form-control form-control-lg"  placeholder="Password">
+                      <div *ngIf="password.errors" class="text-danger">
+                          <small *ngIf="password.errors.required">Ce champs est obligartoire</small>
+                        </div>
+                  </div>
+                  <input [disabled]="!form.valid" type="submit" class="btn btn-success btn-block" value="Login">
+              </form>
+          </div>
+          <p> You don't have an account ? <a  routerLink="/register"> Sing up  here</a></p>
+      </div>
+  
+    </div>
+  <div class="col-lg-4"></div>
+  </div>
+  
