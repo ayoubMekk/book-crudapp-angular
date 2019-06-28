@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
     this.user = localStorage.getItem("iduser")
     this.dataService.getBooks(this.user).subscribe(data => {
       this.s =  Math.ceil(data.length/5);
-      console.log(this.s)
       for(let i=1;i<= this.s ; i++ ) {
         this.pages.push(i)
       

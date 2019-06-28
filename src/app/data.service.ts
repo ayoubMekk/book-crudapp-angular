@@ -18,44 +18,45 @@ const httpOption = {
 export class DataService {
 
 
+  url = "https://ayoub-mekk-bookapp.herokuapp.com"
 
   constructor(private http:HttpClient) { }
   
 
   register(user:User):Observable<User>{
-    return this.http.post<User>("http://localhost:3000/register",user,httpOption)
+    return this.http.post<User>( this.url + "/register",user,httpOption)
   }
 
   login(user:User):Observable<User>{
-    return this.http.post<User>("http://localhost:3000/login",user,httpOption)
+    return this.http.post<User>(this.url +"/login",user,httpOption)
   }
 
 
   getBooks(user):Observable<Book[]>{
-      return this.http.get<Book[]>("http://localhost:3000/books/" + user,httpOption);
+      return this.http.get<Book[]>(this.url +"/books/" + user,httpOption);
   }
 
   getBooks2(p,user):Observable<Book[]>{
-    return this.http.get<any[]>("http://localhost:3000/pbooks/" + user + "?page=" + p+"&size=5",httpOption);
+    return this.http.get<any[]>( this.url +"/pbooks/" + user + "?page=" + p+"&size=5",httpOption);
   }
 
 
  
   getBookById(id,user):Observable<Book>{
-    return this.http.get<Book>("http://localhost:3000/books/"+ user + "/" + id,httpOption);
+    return this.http.get<Book>(this.url +"/books/"+ user + "/" + id,httpOption);
 }
 
   addBook(book:Book):Observable<Book>{
     let user = localStorage.getItem("iduser");
     book.user  = user
-     return this.http.post<Book>("http://localhost:3000/books",book,httpOption)
+     return this.http.post<Book>(this.url +"/books",book,httpOption)
   }
 
   updateBook(book:Book, id,user):Observable<Book>{
-    return this.http.put<Book>("http://localhost:3000/books/" + user + "/" + id ,book,httpOption)
+    return this.http.put<Book>(this.url +"/books/" + user + "/" + id ,book,httpOption)
   }
 
   deleteBook(id,user):Observable<any>{
-    return this.http.delete<any>("http://localhost:3000/books/" + user + "/" + id,httpOption)
+    return this.http.delete<any>(this.url +"/books/" + user + "/" + id,httpOption)
   }
 }

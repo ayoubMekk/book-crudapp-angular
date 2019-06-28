@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   
   login(user){
     this.dataService.login(user).subscribe(u => {
-      console.log(u)
       if (u.length != 0) {
         localStorage.setItem("iduser" , u[0]._id);
         localStorage.setItem("username" , u[0].username);

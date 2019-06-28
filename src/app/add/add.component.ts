@@ -15,7 +15,7 @@ export class AddComponent implements OnInit {
   }
 
   submitForm(book){
-    console.log(book)
+   
     this.dataService.addBook(book).subscribe(book => {
     });
     
