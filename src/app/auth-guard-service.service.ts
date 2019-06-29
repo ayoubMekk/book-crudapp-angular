@@ -12,7 +12,6 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const isLoggedIn = localStorage.getItem("iduser") != null;
-    console.log(localStorage.getItem("iduser"))
     if (isLoggedIn) {
       return true;
     } else {
