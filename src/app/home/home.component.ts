@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
    
     
     this.dataService.getBooks2(1,this.user).subscribe(data => {
-      this.books = data.docs;
+      this.books = data["docs"];
     })
 
   

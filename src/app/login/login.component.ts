@@ -23,16 +23,11 @@ export class LoginComponent implements OnInit {
   
   login(user){
     this.dataService.login(user).subscribe(u => {
-      if (u.length != 0) {
+      
+      if (u[0].length != 0) {
         localStorage.setItem("iduser" , u[0]._id);
         localStorage.setItem("username" , u[0].username);
         location.replace("")
-        /*
-        this.router.navigateByUrl('/login', {skipLocationChange:true}).then(()=>{
-          this.router.navigate(['/'])
-          
-        })
-        */
        
       } else {
          this.inValide = true
