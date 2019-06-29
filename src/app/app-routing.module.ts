@@ -8,23 +8,32 @@ import { EditComponent } from './edit/edit.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthGuardService } from './auth-guard-service.service';
 
 
 
 const routes: Routes = [
-  { path:"", component: localStorage.getItem("iduser") != null ? HomeComponent : LoginComponent},
+  { path:"", component: LoginComponent},
   { path:"register", component: RegisterComponent}, 
-  { path:"login" , component:  LoginComponent},
-  { path:"add", component:localStorage.getItem("iduser") != null ?  AddComponent :LoginComponent},
-  { path:"edit/:id", component:  localStorage.getItem("iduser") != null ? EditComponent :LoginComponent},
+  { path:"login" , component: HomeComponent , canActivate: [AuthGuardService]},
+  { path:"add", component: AddComponent , canActivate: [AuthGuardService]},
+  { path:"edit/:id", component: EditComponent , canActivate: [AuthGuardService]},
   { path:"contact", component: AboutComponent},
   { path:"**", component: PagenotfoundComponent},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{onSameUrlNavigation:"reload"})],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AuthGuardService
+  ]
 })
 
 
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+ 
+  
+ }
