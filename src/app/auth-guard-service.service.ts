@@ -7,7 +7,8 @@ export class AuthGuardService implements CanActivate {
 
   constructor(
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private location:Location
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
@@ -15,7 +16,7 @@ export class AuthGuardService implements CanActivate {
     if (isLoggedIn) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      location.replace("/login")
       return false;
     }
   }
