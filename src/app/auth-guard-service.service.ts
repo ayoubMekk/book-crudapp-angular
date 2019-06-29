@@ -14,6 +14,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const isLoggedIn = this.cookieService.check("iduser")
     if (isLoggedIn) {
+      location.replace("")
       return true;
     } else {
       location.replace("/login")
