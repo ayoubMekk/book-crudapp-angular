@@ -16,12 +16,12 @@ export class NavbarComponent implements OnInit {
   constructor(private router:Router,private location:Location,  private cookieService: CookieService) { }
 
   ngOnInit() {
-   this.username =this.cookieService.get('username');
-    this.logged = this.cookieService.check('iduser') ;
+   this.username =localStorage.getItem("username");
+    this.logged = localStorage.getItemk('iduser') != null ;
   }
 
   logout(){
-    this.cookieService.deleteAll();
+    localStorage.clear()
     location.replace("/login")
   }
 }
