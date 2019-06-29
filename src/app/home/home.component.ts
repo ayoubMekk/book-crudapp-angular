@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   paginate(page){
 
     this.dataService.getBooks2(page,this.user).subscribe(data => {
-      this.books = data.docs;
+      this.books = data["docs"];
     }
     )
     
