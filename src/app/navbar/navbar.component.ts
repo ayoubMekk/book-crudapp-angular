@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
    this.username =localStorage.getItem("username");
-    this.logged = localStorage.getItemk('iduser') != null ;
+    this.logged = localStorage.getItem('iduser') != null ;
   }
 
   logout(){
